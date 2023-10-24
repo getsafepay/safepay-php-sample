@@ -5,4 +5,4 @@
 // This is a public sample test API key.
 // Don’t submit any personally identifiable information in requests made with this key.
 // Sign in to see your own test API key embedded in code samples.
-$safepaySecreyKey = '15670709dbd82556e286cc6640ebc31716b1a53b1463361d626e63ca741c16dc';
+$safepaySecreyKey = 'a02bbd4d71f8c2c7c9c99b8731cc93d58d6f821a79b2b5d5a9d42b0f92d788d6';
