@@ -7,33 +7,35 @@ $safepay = new \Safepay\SafepayClient([
   'api_key' => $safepaySecreyKey,
   'api_base' => 'https://dev.api.getsafepay.com'
 ]);
+// $safepay = new \Safepay\SafepayClient($safepaySecreyKey);
 header('Content-Type: application/json');
 
 // Create a customer
 // Error handling has been ommitted by default but you can 
 // use the above try-catch pattern to handle errors
-// $customer = $safepay->customer->create([
-//   "first_name" => "Hassan",
-//   "last_name" => "Zaidi",
-//   "email" => "hzaidi@getsafepay.com",
-//   "phone_number" => "+923331234567",
-//   "country" => "PK",
-//   // By default all customers are created as guests
-//   // unless it is explicitly specified to be false
-//   "is_guest" => true
-// ]);
+$customer = $safepay->customer->create([
+  "first_name" => "Hassan",
+  "last_name" => "Zaidi",
+  "email" => "hzaidi@getsafepay.com",
+  "phone_number" => "+923331234567",
+  "country" => "PK",
+  // By default all customers are created as guests
+  // unless it is explicitly specified to be false
+  "is_guest" => true
+]);
 
-// $customer = $safepay->customer->retrieve("cus_dbbb1507-fc24-424a-8f8e-5ba25142c6b5");
+$customer = $safepay->customer->retrieve("cus_dbbb1507-fc24-424a-8f8e-5ba25142c6b5");
 // // This is the token that should be saved in your DB to link 
 // // your customer with the one created on Safepay
-// echo $customer->token . '\n';
-// echo $customer->first_name . '\n';
-// echo $customer->last_name . '\n';
+echo $customer->token . '\n';
+echo $customer->first_name . '\n';
+echo $customer->last_name . '\n';
+echo $customer->email . '\n';
 
-// $customer = $safepay->customer->update($customer->token, [
-//   "first_name" => "Ziyad",
-//   "last_name" => "Parekh"
-// ]);
+$customer = $safepay->customer->update($customer->token, [
+  "first_name" => "Ziyad",
+  "last_name" => "Parekh"
+]);
 
 // echo $customer->token . '\n';
 // echo $customer->first_name . '\n';

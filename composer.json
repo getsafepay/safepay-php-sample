@@ -1,11 +1,5 @@
 {
-  "repositories": [
-    {
-        "type": "path",
-        "url": "/Users/zp/IFT/cefi/safepay/sfpy-php"
-    }
-  ],
   "require": {
-      "getsafepay/sfpy-php": "dev-main"
+      "getsafepay/sfpy-php": "main"
   }
 }

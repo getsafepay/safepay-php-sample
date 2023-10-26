@@ -7,6 +7,9 @@ $safepay = new \Safepay\SafepayClient([
   'api_key' => $safepaySecreyKey,
   'api_base' => 'https://dev.api.getsafepay.com'
 ]);
+
+\Safepay\Safepay::setApiBase("http://localhost");
+
 header('Content-Type: application/json');
 
 // Set up a tracker
@@ -75,6 +78,7 @@ $paymentMethods = \Safepay\Customer::allPaymentMethods($customer->token);
 if (0 === $paymentMethods->count()) {
   throw new Exception("No payment methods", 1);
 }
+
 // Index into a specific payment method
 $paymentMethod = $paymentMethods->wallet[0];
 
@@ -100,6 +104,8 @@ $tracker = $tracker->charge([
   ]
 ]);
 
+
+
 // Or by using the safepay client (in case you don't have the tracker object on hand)
 $tracker = $safepay->order->charge($tracker->token, [
   "payload" => [
@@ -111,8 +117,14 @@ $tracker = $safepay->order->charge($tracker->token, [
   ]
 ]);
 
+$tracker = $tracker->metadata([
+  "source" => "alfatah-app",
+  "order_id" => "SHOPIFY-123456"
+]);
+
 // Delete a customer, if you'd like to 
 // Note:: Once a customer is deleted, they cannot be used again
 $response = $safepay->customer->delete($token);
+$response = $safepay->paymentMethod->delete($token);
 // this will be true if deletion was successful
 echo $response->deleted;
