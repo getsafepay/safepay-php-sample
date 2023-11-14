@@ -150,8 +150,10 @@ try {
   has been ommitted for brevity
 */
 $session = $safepay->order->metadata($session->tracker->token, [
-  "source" => "alfatah-app",
-  "order_id" => "SHOPIFY-123456"
+  "data" => [
+    "source" => "alfatah-app",
+    "order_id" => "SHOPIFY-123456"
+  ]
 ]);
 
 /* 
